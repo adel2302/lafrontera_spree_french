@@ -8,7 +8,7 @@ Bundler.require(*Rails.groups)
 
 module LafronteraSpreeFrench
   class Application < Rails::Application
-    
+
     config.to_prepare do
       # Load application's model / class decorators
       Dir.glob(File.join(File.dirname(__FILE__), "../app/**/*_decorator*.rb")) do |c|
@@ -35,5 +35,25 @@ module LafronteraSpreeFrench
 
     # Do not swallow errors in after_commit/after_rollback callbacks.
     config.active_record.raise_in_transactional_callbacks = true
+
+
+    config.after_initialize do
+      Spree::CheckoutController.class_eval do
+        def ensure_checkout_allowed
+          check = @order.checkout_allowed?
+          unless check == true
+            redirect_to spree.root_path, :flash => {:error => I18n.t("checkout_allowed_errors.#{check}")}
+          end
+        end
+      end
+      Spree::Order.class_eval do
+        def checkout_allowed?
+          return :not_empty     unless line_items.count > 0
+          return :minimum_value unless total >= 20
+          true
+        end
+      end
+    end
+
   end
 end

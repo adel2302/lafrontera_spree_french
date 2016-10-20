@@ -1,0 +1,7 @@
+fr:
+  checkout_allowed_errors:
+    minimum_value: "Le minimum de commande de 20 euro n'est pas atteint"
+  spree:
+    save_my_address: "Enregistrer mon adresse"
+    risky: "Risqué"
+    risk_analysis: "Analyse de risque"
