@@ -37,23 +37,23 @@ module LafronteraSpreeFrench
     config.active_record.raise_in_transactional_callbacks = true
 
 
-    config.after_initialize do
-      Spree::CheckoutController.class_eval do
-        def ensure_checkout_allowed
-          check = @order.checkout_allowed?
-          unless check == true
-            redirect_to spree.root_path, :flash => {:error => I18n.t("checkout_allowed_errors.#{check}")}
-          end
-        end
-      end
-      Spree::Order.class_eval do
-        def checkout_allowed?
-          return :not_empty     unless line_items.count > 0
-          return :minimum_value unless total >= 20
-          true
-        end
-      end
-    end
+    # config.after_initialize do
+    #   Spree::CheckoutController.class_eval do
+    #     def ensure_checkout_allowed
+    #       check = @order.checkout_allowed?
+    #       unless check == true
+    #         redirect_to spree.root_path, :flash => {:error => I18n.t("checkout_allowed_errors.#{check}")}
+    #       end
+    #     end
+    #   end
+    #   Spree::Order.class_eval do
+    #     def checkout_allowed?
+    #       return :not_empty     unless line_items.count > 0
+    #       return :minimum_value unless total >= 20
+    #       true
+    #     end
+    #   end
+    # end
 
   end
 end
