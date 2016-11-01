@@ -5,3 +5,8 @@ fr:
     save_my_address: "Enregistrer mon adresse"
     risky: "Risqué"
     risk_analysis: "Analyse de risque"
+    use_existing_cc: "Utiliser une carte bancaire enregistrer"
+    use_new_cc_or_payment_method: "Utiliser une nouvelle carte bancaire ou autre moyen de payment"
+    shipping_total: "Frais internet"
+    shipment_details: "Livraison sous 45 à 60 minutes"
+    report: "Rapport"
