@@ -18,10 +18,10 @@
     <div class="col-md-3">
       <div class="panel panel-default">
         <div class="panel-heading">
-          <% if Time.now.strftime("%A") == "Wednesday" && Time.now.strftime("%H:%M") > "16:30" ||  Time.now.strftime("%A") == "Thursday" && Time.now.strftime("%H:%M") < "00:00" %>
+          <% if Time.now.strftime("%A") == "Wednesday" && Time.now.strftime("%H:%M") > "17:30" ||  Time.now.strftime("%A") == "Thursday" && Time.now.strftime("%H:%M") < "01:00" %>
             <p>Votre restaurant est actuellement: <span style="color: red; font-size: 18px;">Fermer</span></p>
           <% else %>
-            <% if Time.now.strftime("%H:%M") > "00:00" && Time.now.strftime("%H:%M") < "16:30" %>
+            <% if Time.now.strftime("%H:%M") > "01:00" && Time.now.strftime("%H:%M") < "17:30" %>
               <p>Votre restaurant est actuellement: <span style="color: red; font-size: 18px;">Fermer</span></p>
             <% else %>
                <p>Votre restaurant est actuellement: <span style="color: green; font-size: 18px;">Ouvert</span></p>
